@@ -11,7 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<IdentityDbContext>(option =>
 //option.UseSqlServer(builder.Configuration.GetConnectionString("idenitycs")));
-option.UseMySQL(builder.Configuration.GetConnectionString("idenitycs")));
+option.UseMySQL(builder.Configuration.GetConnectionString("idenitycs"))
+    .EnableSensitiveDataLogging()
+    .LogTo(Console.WriteLine, LogLevel.Information));
 
 
 builder.Services.AddIdentityApiEndpoints<IdentityUser>().

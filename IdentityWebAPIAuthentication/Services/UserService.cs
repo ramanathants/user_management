@@ -1,5 +1,6 @@
 ﻿using IdentityWebAPIAuthentication.Model;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace IdentityWebAPIAuthentication.Services
 {
@@ -17,7 +18,7 @@ namespace IdentityWebAPIAuthentication.Services
         public async Task<List<UserModel>> GetAllUsers()
         {
             var response = new List<UserModel>();
-            var users = _userManager.Users.ToList();
+            var users = await _userManager.Users.ToListAsync();
             foreach (var x in users)
             {
                 var userRoles = await _userManager.GetRolesAsync(x);

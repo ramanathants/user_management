@@ -17,7 +17,7 @@ namespace IdentityWebAPIAuthentication.Controllers
             _roleService = roleService;
         }
 
-        [Authorize(Roles = "admin")]
+  //      [Authorize(Roles = "admin")]
         [HttpGet("GetRoles")]
         public async Task<IActionResult> GetRoles()
         {
@@ -26,8 +26,8 @@ namespace IdentityWebAPIAuthentication.Controllers
             return Ok(list);
         }
 
-        [Authorize]
-        [HttpGet("GetUserRole")]
+ //       [Authorize]
+       [HttpGet("GetUserRole")]
         public async Task<IActionResult> GetuserRole(string userEmail)
         {
             var userClaims = await _roleService.GetUserRolesAsync(userEmail);
@@ -47,7 +47,7 @@ namespace IdentityWebAPIAuthentication.Controllers
             return Ok(userrole);
         }
 
-        [Authorize(Roles = "admin")]
+  //      [Authorize(Roles = "admin")]
         [HttpPost("addUserRoles")]
         public async Task<ActionResult> AddUserRole([FromBody] AddUserModel addUser)
         {
